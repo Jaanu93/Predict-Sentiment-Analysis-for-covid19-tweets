@@ -493,8 +493,6 @@ tweetsSparse
 
 #  Split data in training/testing sets
 
-# Negative split with 80%train 
-
 ```{r}
 library(caTools)
 set.seed(123)
