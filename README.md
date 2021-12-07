@@ -105,6 +105,8 @@ library(ggplot2)
 
 ggplot(sentiment1,aes(country)) + geom_bar(aes(fill=lang)) + labs(title = "Maximum Number of tweets from different countries(With multiple languages)",caption = "Source:Data from Twitter API") + theme(axis.text.x = element_text(angle = 90))
 ```
+![image](https://user-images.githubusercontent.com/95671214/145086966-72e62f19-e143-4a80-886d-74b4d6ee4d08.png)
+
 
 
 ```{r}
@@ -126,6 +128,9 @@ ggplot(top5cvt_loc,aes(place_full_name,n)) + geom_bar(stat="identity",fill="dark
 
 ```
 
+![image](https://user-images.githubusercontent.com/95671214/145087065-d7d38822-d354-4279-a207-49cb44db316c.png)
+
+
 
 # Top 10 User Tweets
 
@@ -146,13 +151,13 @@ LT <- sentiment1 %>%
 LT
 ```
 
-
 ```{r}
 # Most liked Tweets Graph
 ggplot(LT,aes(screen_name,favorite_count)) + geom_bar(stat="identity",aes(fill=country)) + 
   labs(title = "Most liked Tweets Vs Favorite count",x="Screen Name(User Name)",y="Favorite Count") + theme(axis.text.x = element_text(angle = 90))
 ```
 
+![image](https://user-images.githubusercontent.com/95671214/145087117-fefe112a-dda3-4fc1-8a68-caf8f3e81c23.png)
 
 
 ```{r}
@@ -171,6 +176,7 @@ ggplot(retw,aes(screen_name,retweet_count)) + geom_bar(stat="identity",aes(fill=
   labs(title = "Most Retweeted tweets Vs Retweet count",x="Screen Name(User Name)",y="Retweet Count") + theme(axis.text.x = element_text(angle = 90))
 
 ```
+![image](https://user-images.githubusercontent.com/95671214/145087163-f8c6c555-fe18-4c7c-b23c-4bad7ab376b7.png)
 
 
 
@@ -223,38 +229,6 @@ frequency_global %>% top_n(10)
 
 
 
-
-
-
-
-pride_prejudice <- tidy_tweets %>% 
-  filter(source == "Twitter for iPhone")
-
-pride_prejudice
-
-
-library(tidyr)
-tweets111 <- pride_prejudice %>%
-  inner_join(get_sentiments("afinn")) %>%
-  count(source, index = linenumber %/% 80, sentiment) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
-  mutate(sentiment = positive - negative) 
-library(ggplot2)
-tweets111 %>% 
-ggplot( aes(index, sentiment, fill = Senti)) +
-  geom_col(show.legend = FALSE) +
-  facet_wrap(~book, ncol = 2, scales = "free_x")
-
-
-
-
-
-
-
-
-
-
-
 #  Text analysis
 #  data visualization
 ```{r}
@@ -263,6 +237,9 @@ wordcloud(frequency_global$word,frequency_global$n, min.freq = 100,
           scale=c(4.5, .3), random.order = FALSE, random.color = FALSE,
           colors = brewer.pal(8, "Dark2"), res=800)
 ```
+
+![image](https://user-images.githubusercontent.com/95671214/145087276-12013938-31e9-4588-a15f-e182d7ba9da1.png)
+
 
 
 #  Only US tweets and word frequency
@@ -284,6 +261,8 @@ wordcloud(frequency_us$word,frequency_us$n, min.freq =50, scale=c(4.5, .2), rand
 
 
 ```
+![image](https://user-images.githubusercontent.com/95671214/145087347-eba73730-12f5-4068-9662-044497ada4df.png)
+
 
 
 
@@ -307,6 +286,9 @@ library(plotrix)
 pie3D(perc$percent,labels=label,labelcex=1.1,explode= 0.1, 
       main="Worldwide Sentiment") #create a pie chart
 ```
+
+![image](https://user-images.githubusercontent.com/95671214/145087410-5a910033-e2c4-45b7-b175-859b2b6c3a35.png)
+
 
 
 #  Most Common Positive and Negative words
@@ -332,6 +314,8 @@ ggplot(top_words, aes(word, n, fill = sentiment)) +
   theme(plot.title = element_text(size = 14, face = "bold",hjust = 0.5))
 ```
 
+![image](https://user-images.githubusercontent.com/95671214/145087462-0be8ca21-8d26-42ad-8380-2b3c3981208f.png)
+
 
 
 
@@ -352,6 +336,7 @@ tidy_tweets %>%
   #plot the result
   chartJSRadar(showToolTipLabel = TRUE, main = "NRC Radar")
 ```
+![image](https://user-images.githubusercontent.com/95671214/145087602-d6e67be9-d920-4db9-8e18-3bc8873f1e31.png)
 
 
 #  Sentiment Word Frequency
@@ -377,6 +362,9 @@ tidy_tweets %>%
   theme(plot.title = element_text(size = 14, face = "bold",hjust = 0.5))
 ```
 
+
+![image](https://user-images.githubusercontent.com/95671214/145087638-8d687dd2-2a73-4a46-8253-2130183eeb77.png)
+
 #  Create sentiment_score
 
 
@@ -391,6 +379,8 @@ colnames(tweets)[1] <- "text"
 hist(tweets$sentiment_score,breaks = 5)
 
 ```
+
+![image](https://user-images.githubusercontent.com/95671214/145087781-c35f78e9-7983-4823-84db-754e7e313618.png)
 
 
 
@@ -557,6 +547,8 @@ cmat_CTREE
 accu_CTREE <- (cmat_CTREE[1,1] + cmat_CTREE[2,2])/sum(cmat_CTREE)
 accu_CTREE
 ```
+![image](https://user-images.githubusercontent.com/95671214/145087846-f74e2996-17db-4734-abf3-1aa2a9c313fb.png)
+
 
 
 
@@ -582,6 +574,8 @@ cmat_CART
 accu_CART <- (cmat_CART[1,1] + cmat_CART[2,2])/sum(cmat_CART)
 accu_CART
 ```
+![image](https://user-images.githubusercontent.com/95671214/145087884-56aace27-c197-4190-80ab-b0c7492fab38.png)
+![image](https://user-images.githubusercontent.com/95671214/145087895-71f69b9e-7884-4277-97ee-7e9f0b530741.png)
 
 
 
@@ -655,6 +649,9 @@ write.csv(transcovid19,file = "covidtweetsSparse.csv")
 itemFrequencyPlot(order_trans2,topN=30)
 ```
 
+![image](https://user-images.githubusercontent.com/95671214/145087959-96f9b051-5515-46b6-964d-fa6f0d861ed0.png)
+
+
 ```{r}
 inspect(order_trans2[1:15])
 
@@ -674,24 +671,30 @@ itemFrequencyPlot(order_trans2, support = .10)
 
 ```
 
+![image](https://user-images.githubusercontent.com/95671214/145087991-0def21b5-0fa6-4ed1-a801-40c559bcc0d8.png)
 
 
 ```{r}
 itemFrequencyPlot(order_trans2, support = .15)
 
 ```
+![image](https://user-images.githubusercontent.com/95671214/145088017-0df129c2-de82-4576-869c-b00aa65897ff.png)
 
 
 ```{r}
 itemFrequencyPlot(order_trans2,topN=10,type="absolute")
 
 ```
+![image](https://user-images.githubusercontent.com/95671214/145088045-d6a12884-3830-4738-a25d-ed7af56c4089.png)
 
 
 ```{r}
 itemFrequencyPlot(order_trans2,topN=10,type="relative")
 
 ```
+
+![image](https://user-images.githubusercontent.com/95671214/145088068-7f91b13c-ea7f-47de-b485-131fee1bd3d4.png)
+
 
 # Defining Rules
 # Now that we have have an idea of how the data looks. We proceed to create rules. Rules are formed by defining the minimum support and confidence levels. Also the minlen option lets us to set the minimum number of items for both the LHS and RHS.
