@@ -1,18 +1,11 @@
-# Predict-Sentiment-Analysis-for-covid19-tweets
+#  Predict-Sentiment-Analysis-for-covid19-tweets
 My first repository on GitHub.
-The repository contains an ongoing collection of tweets IDs associated with the novel coronavirus COVID-19 (SARS-CoV-2), which commenced on January 28, 2020. We used the Twitter’s search API to gather historical Tweets from the preceding 7 days. We leveraged Twitter’s streaming API to follow specified accounts and also collect in real-time tweets that mention specific keywords.
 
----
-title: "To Predict the sentiment of Covid19 tweets"
-author: "Jahnavi Patchipalu and Wen Yuan"
-output:
-  html_document:
-    df_print: paged
-  html_notebook: default
-  pdf_document: default
-Date: 06-12-2021
-Course: Program for Big Data Analytics
----
+
+# Problem Statement: To Predict the sentiment of Covid19 tweets
+## Author: "Jahnavi Patchipalu and Wen Yuan"
+## Date: 06-12-2021
+## Course: Program for Big Data Analytics
 
 
 ```{r}
