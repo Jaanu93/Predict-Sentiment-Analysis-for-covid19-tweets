@@ -31,7 +31,7 @@ library(tm)
 #  collect data about covid tweets from the TwitterAPI
 ```{r}
 library(rtweet)
-#covid19_tweets <- search_tweets("#covid19",n=10000,include_rts=FALSE,retryonratelimit=TRUE)
+#covid19_tweets <- search_tweets("#covid19",n=100000,include_rts=FALSE,retryonratelimit=TRUE)
 ```
 
 
